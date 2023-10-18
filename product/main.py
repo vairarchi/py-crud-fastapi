@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from .import models
 from .database import engine
-from .router import product, seller
+from .router import product, seller, login
 
 app = FastAPI(
     title="Products API",
@@ -20,6 +20,7 @@ app = FastAPI(
 
 app.include_router(product.router)
 app.include_router(seller.router)
+app.include_router(login.router)
 
 models.Base.metadata.create_all(engine)
 
